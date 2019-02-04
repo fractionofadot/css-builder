@@ -58,16 +58,30 @@
 			margin-left: 10px;
 		}
 		#suggestions {
-			position: fixed;
-			background: white;
-
+			position: absolute;
+			border: 1px solid #d4d4d4;
+			border-bottom: none;
+			border-top: none;
+			z-index: 99;
+			top: 100%;
+			left: 0;
+			right: 100;
+			background-color: white;
 
 		}
 		.ac-container {
 			display: inline-block;
+			position: relative;
 		}
 		#object_of_focus {
 			padding: 0px 10px;
+		}
+		li {
+			list-style: none;
+			padding-left: 10px;
+		}
+		li:hover {
+			background-color: #eee;
 		}
 	</style>
 </head>
@@ -80,7 +94,7 @@
 		<span><a class="rwp-button" onclick="clearSelection()">Deselect</a></span>
 		<a class="rwp-button" onclick="remove(object_of_focus)">Remove</a>
 		<span id="css-input">
-		<div class="ac-container"><form method="post" onsubmit="return styleObject();"><input id="property" type="text" name="property"><span id="suggestions"></span></div> : <input id="value" type="text" name="value"> <input class="rwp-button" id="apply" type="submit" name="submit" value="Apply"></form>
+		<div class="ac-container"><form method="post" onsubmit="return styleObject();"><input id="property" type="text" name="property" autocomplete="off"><span id="suggestions"></span></div> : <input id="value" type="text" name="value"> <input class="rwp-button" id="apply" type="submit" name="submit" value="Apply"></form>
 		
 	</span>
 		
@@ -149,13 +163,19 @@
 
 			for (i = 0; i < properties.length; i++) {
 			  if (properties[i].toUpperCase().indexOf(property.toUpperCase()) !== -1) {
-			  	var match = document.createTextNode(properties[i]);
+			  	var match = document.createElement("li");
+			  	match.addEventListener("click", function () {
+			  		document.getElementById("property").value = this.innerHTML;
+			  		clearSuggestions(suggestions);
+			  		return false;
+			  	});
+			  	match.appendChild(document.createTextNode(properties[i]))
+			  	 
 			  	if (properties[i].toUpperCase() === property.toUpperCase()) {
 			  		clearSuggestions(suggestions);
 			  		return false;
 			  	}
 			  	suggestions.appendChild(match);
-			  	suggestions.appendChild(document.createElement("br"));
 			  }
 			}
 		});
