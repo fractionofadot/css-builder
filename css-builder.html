@@ -69,13 +69,14 @@
 <body>
 	<div id="control-area">
 		<span><input type="text" name="element" id="element" value="div"></span>
-		<a class="rwp-button" onclick="insertElement(document.getElementById('element').value)">Insert Element</a>
-		<span><a class="rwp-button" onclick="clearSelection()">Clear Selection</a></span>
+		<a class="rwp-button" onclick="insertElement(document.getElementById('element').value)">Ins</a>
+		<a class="rwp-button" onclick="insertText(document.getElementById('element').value)">Text</a>
+		<span><a class="rwp-button" onclick="clearSelection()">Deselect</a></span>
 		<a class="rwp-button" onclick="remove(object_of_focus)">Remove</a>
 		
 		<span>(<span id="object_of_focus">0</span>)</span>
 		<span id="css-input">
-		<div class="ac-container"><form method="post" onsubmit="return styleObject();"><input id="property" type="text" name="property"><span id="suggestions"></span></div> : <input id="value" type="text" name="value"> <input class="rwp-button" id="apply" type="submit" name="submit" value="Apply" ></form>
+		<div class="ac-container"><form method="post" onsubmit="return styleObject();"><input id="property" type="text" name="property"><span id="suggestions"></span></div> : <input id="value" type="text" name="value"> <input class="rwp-button" id="apply" type="submit" name="submit" value="Apply"></form>
 		
 	</span>
 		
@@ -104,6 +105,13 @@
 
 		document.getElementById(object_of_focus.id).appendChild(node);	
 		
+	}
+
+	function insertText(text) {
+		object_counter = object_counter + 1;
+		var node = document.createTextNode(text);
+
+		document.getElementById(object_of_focus.id).appendChild(node);
 	}
 
 	function selectObject(selected_object) {
@@ -153,6 +161,8 @@
 
 	function remove(element) {
 		element.parentNode.removeChild(element);
+		object_of_focus = document.getElementById("demo-area");
+		document.getElementById("object_of_focus").innerHTML = object_of_focus.id;
 	}
 
 	function clearSelection() {
