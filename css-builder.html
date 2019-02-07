@@ -80,7 +80,7 @@
 			list-style: none;
 			padding-left: 10px;
 		}
-		li:hover {
+		#suggestions li:hover {
 			background-color: #eee;
 		}
 	</style>
@@ -161,23 +161,50 @@
 		}
 	}
 
+	function selectProperty (e) {
+		if (e.key === 'Tab') {
+			var clickIt = new Event('click');
+			var suggestions = document.getElementById("suggestions");
+
+			if (suggestions.firstChild) {
+				suggestions.firstChild.dispatchEvent(clickIt);
+				return false;
+			}
+		} else {
+			return false;
+		}
+		return false;
+	}
+	
+	document.getElementById("property").addEventListener("keydown", selectProperty);
+
 	function suggestProperties() {
 		var suggestions = document.getElementById("suggestions");
 
-		document.getElementById("property").addEventListener("input", function() {
+		document.getElementById("property").addEventListener("input", function(e) {
+
 			property = document.getElementById("property").value
+
 			clearSuggestions(suggestions);
+
 			if (!property) { return false;}
 
 			for (i = 0; i < properties.length; i++) {
 			  if (properties[i].toUpperCase().indexOf(property.toUpperCase()) !== -1) {
+
 			  	var match = document.createElement("li");
+
 			  	match.addEventListener("click", function () {
 			  		document.getElementById("property").value = this.innerHTML;
 			  		clearSuggestions(suggestions);
 			  		return false;
 			  	});
-			  	match.appendChild(document.createTextNode(properties[i]))
+
+			  	
+
+
+
+			  	match.appendChild(document.createTextNode(properties[i]));
 			  	 
 			  	if (properties[i].toUpperCase() === property.toUpperCase()) {
 			  		clearSuggestions(suggestions);
