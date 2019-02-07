@@ -1,0 +1,80 @@
+	body {
+		margin: 0px;
+		padding: 0px;
+	}
+	html {
+		margin: 0px;
+		padding: 0px;
+	}
+	* {
+		box-sizing: border-box;
+		font-family: Avenir, Futura;
+	}
+	.rwp-button {
+		background-color: purple;
+		color: white;
+		border-radius: 5px;
+		border: 1px solid black;
+		cursor: pointer;
+		padding: 10px;
+		text-transform: uppercase;
+		font-family: Avenir, Futura;
+		font-weight: bold;
+		font-size: 10px;
+		margin: 10px;
+		box-sizing: border-box;
+		display: inline-block;
+	}
+	.rwp-default {
+		border: 1px dotted black;
+		margin: 5px;
+		padding: 5px;
+	}
+	#demo-area {
+		width: 100%;
+		padding: 0px;
+		position: absolute;
+		top: 75px;
+		left: 0px;
+		z-index: 1;
+
+	}
+	#control-area {
+		box-sizing: border-box;
+		background-color: orange;
+		box-shadow: 0px 5px 20px #777777;
+		position: fixed;
+		margin: 0px;
+		width: 100%;
+		z-index: 10;
+		padding-left: 10px;
+	}
+	#css-input {
+		margin-left: 10px;
+	}
+	#suggestions {
+		position: absolute;
+		border: 1px solid #d4d4d4;
+		border-bottom: none;
+		border-top: none;
+		z-index: 99;
+		top: 100%;
+		left: 0;
+		right: 100;
+		background-color: white;
+
+	}
+	.ac-container {
+		display: inline-block;
+		position: relative;
+	}
+	#object_of_focus {
+		padding: 0px 10px;
+	}
+	li {
+		list-style: none;
+		padding-left: 10px;
+	}
+	#suggestions li:hover {
+		background-color: #eee;
+	}
