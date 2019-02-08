@@ -10,12 +10,13 @@
 		<span><input type="text" name="element" id="element" value="div"></span>
 		<a class="rwp-button" onclick="insertElement(document.getElementById('element').value)">Ins</a>
 		<a class="rwp-button" onclick="insertText(document.getElementById('element').value)">Text</a>
-		<span><a class="rwp-button" onclick="clearSelection()">Deselect</a></span>
+		<span><input type="submit" class="rwp-button" onclick="clearSelection()" value="Deselect"></span>
 		<a class="rwp-button" onclick="remove(object_of_focus)">Remove</a>
 		<span id="css-input">
 			<div class="ac-container"><form method="post" onsubmit="return styleObject();"><input id="property" type="text" name="property" autocomplete="off"><span id="suggestions"></span></div> : <input id="value" type="text" name="value"> <input class="rwp-button" id="apply" type="submit" name="submit" value="Apply"></form>
 
 		</span>
+		<span class="save"><input id="save-name" value="demo"> <input type="submit" id="save-button" name="save" value="save" class="rwp-button"> <input type="submit" name="load" value="load" class="rwp-button"></span>
 		
 	</div>
 	
