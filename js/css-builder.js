@@ -175,6 +175,7 @@
 	function loadSaved(name) {
 		if (sessionStorage.getItem(name)) {
 			document.getElementById("demo-area").innerHTML = (sessionStorage.getItem(name));
+			console.log("Saved ", name);
 		}
 
 		else {
