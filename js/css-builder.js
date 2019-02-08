@@ -6,6 +6,7 @@
 	loadSaved("demo");
 
 	function insertElement(element) {
+		element = document.getElementById('element').value;
 
 		while (document.getElementById(object_counter)) {
 			object_counter = object_counter + 1;
@@ -31,14 +32,6 @@
 
 		saveProgress(document.getElementById('save-name').value);
 		
-	}
-
-	function insertText(text) {
-		object_counter = object_counter + 1;
-		var node = document.createTextNode(text);
-
-		document.getElementById(object_of_focus.id).appendChild(node);
-		saveProgress(document.getElementById("save-name").value);
 	}
 
 	function selectObject(selected_object) {
@@ -139,6 +132,7 @@
 	}
 
 	function remove(element) {
+		element = object_of_focus;
 		element.parentNode.removeChild(element);
 		object_of_focus = document.getElementById("demo-area");
 		document.getElementById("object_of_focus").innerHTML = object_of_focus.id;
@@ -211,5 +205,8 @@
 	document.getElementById("delete-button").addEventListener("click", function () {
 		deleteSaved(document.getElementById("save-name").value);
 	});
+
+	document.getElementById("remove-button").addEventListener("click", remove);
+	document.getElementById("insert-button").addEventListener("click", insertElement);
 
 	suggestProperties();

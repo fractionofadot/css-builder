@@ -7,11 +7,9 @@
 <body>
 	<div id="control-area">
 		<span id="object_of_focus">0</span>
-		<span><input type="text" name="element" id="element" value="div"></span>
-		<a class="rwp-button" onclick="insertElement(document.getElementById('element').value)">Ins</a>
-		<a class="rwp-button" onclick="insertText(document.getElementById('element').value)">Text</a>
+		<span><input type="text" name="element" id="element" value="div"> <input type="submit" id="insert-button" class="rwp-button" value="insert"></span>
 		<span><input type="submit" class="rwp-button" onclick="clearSelection()" value="Deselect"></span>
-		<a class="rwp-button" onclick="remove(object_of_focus)">Remove</a>
+		<a class="rwp-button" id="remove-button">Remove</a>
 		<span id="css-input">
 			<div class="ac-container"><form method="post" onsubmit="return styleObject();"><input id="property" type="text" name="property" autocomplete="off"><span id="suggestions"></span></div> : <input id="value" type="text" name="value"> <input class="rwp-button" id="apply" type="submit" name="submit" value="Apply"></form>
 
